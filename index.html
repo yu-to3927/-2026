@@ -1,1 +1,122 @@
-ゲーム作り
+
+```html id="gacha01"
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ガチャゲーム</title>
+
+<style>
+body{
+    font-family: sans-serif;
+    background: linear-gradient(180deg,#1a1a2e,#16213e);
+    color:white;
+    text-align:center;
+    padding-top:80px;
+}
+
+h1{
+    font-size:40px;
+}
+
+#result{
+    margin-top:40px;
+    font-size:28px;
+}
+
+button{
+    padding:15px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:10px;
+    background:#ffd700;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffcc00;
+}
+
+.star5{
+    color:#ffd700;
+    font-size:40px;
+}
+
+.star4{
+    color:#b19cff;
+    font-size:35px;
+}
+
+.star3{
+    color:#9ecfff;
+    font-size:30px;
+}
+
+.box{
+    margin:auto;
+    margin-top:40px;
+    width:400px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+}
+</style>
+
+</head>
+<body>
+
+<h1>✨ ガチャゲーム ✨</h1>
+
+<div class="box">
+
+<button onclick="gacha()">ガチャを引く</button>
+
+<div id="result">
+ここに結果が表示されます
+</div>
+
+</div>
+
+<script>
+
+const fiveStar = ["神キャラA","神キャラB"];
+const fourStar = ["強キャラA","強キャラB","強キャラC"];
+const threeStar = ["武器A","武器B","武器C","武器D"];
+
+function gacha(){
+
+let rand = Math.random()*100;
+let resultText="";
+let className="";
+
+if(rand < 5){
+
+let char = fiveStar[Math.floor(Math.random()*fiveStar.length)];
+resultText = "★★★★★ " + char;
+className="star5";
+
+}else if(rand < 25){
+
+let char = fourStar[Math.floor(Math.random()*fourStar.length)];
+resultText = "★★★★ " + char;
+className="star4";
+
+}else{
+
+let char = threeStar[Math.floor(Math.random()*threeStar.length)];
+resultText = "★★★ " + char;
+className="star3";
+
+}
+
+let resultDiv = document.getElementById("result");
+resultDiv.innerHTML = resultText;
+resultDiv.className = className;
+
+}
+
+</script>
+
+</body>
+</html>
+```
